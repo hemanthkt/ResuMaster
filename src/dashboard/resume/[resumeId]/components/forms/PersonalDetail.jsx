@@ -3,8 +3,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useParams } from "react-router-dom";
-import GlobalApi from "/service/GlobalApi";
+import GlobalApi from "./../../../../../../service/GlobalApi";
 import { LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
 function PersonlDetail({ enabledNext }) {
   const params = useParams();
 
@@ -37,6 +38,7 @@ function PersonlDetail({ enabledNext }) {
 
         enabledNext(true);
         setLoading(false);
+        toast("Detals updated");
       },
       (error) => {
         setLoading(false);
@@ -86,21 +88,21 @@ function PersonlDetail({ enabledNext }) {
             <label className="text-sm" htmlFor="">
               Address
             </label>
-            <Input name="Address" required onChange={handleInputChange}></Input>
+            <Input name="address" required onChange={handleInputChange}></Input>
           </div>
 
           <div>
             <label className="text-sm" htmlFor="">
               Phone
             </label>
-            <Input name="Phone" required onChange={handleInputChange}></Input>
+            <Input name="phone" required onChange={handleInputChange}></Input>
           </div>
 
           <div>
             <label className="text-sm" htmlFor="">
               Email
             </label>
-            <Input name="Email" required onChange={handleInputChange}></Input>
+            <Input name="email" required onChange={handleInputChange}></Input>
           </div>
 
           <div className="mt-3 flex justify-end">

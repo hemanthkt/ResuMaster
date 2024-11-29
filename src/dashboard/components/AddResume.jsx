@@ -28,13 +28,14 @@ function AddResume() {
     const data = {
       data: {
         title: resumeTitle,
-        resumeid: uuid,
+        resumeId: uuid,
         userEmail: user?.primaryEmailAddress?.emailAddress,
         userName: user?.fullName,
       },
     };
     GlobalApi.CreateNewResume(data).then(
       (resp) => {
+        console.log(data);
         console.log(resp.data.data.documentId);
         if (resp) {
           setLoading(false);
