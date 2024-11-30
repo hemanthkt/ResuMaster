@@ -60,6 +60,7 @@ function PersonlDetail({ enabledNext }) {
               name="firstName"
               required
               onChange={handleInputChange}
+              defaultValue={resumeInfo?.firstName}
             ></Input>
           </div>
 
@@ -71,6 +72,7 @@ function PersonlDetail({ enabledNext }) {
               name="lastName"
               required
               onChange={handleInputChange}
+              defaultValue={resumeInfo?.lastName}
             ></Input>
           </div>
 
@@ -82,27 +84,43 @@ function PersonlDetail({ enabledNext }) {
               name="jobTitle"
               required
               onChange={handleInputChange}
+              defaultValue={resumeInfo?.jobTitle}
             ></Input>
           </div>
           <div className="col-span-2">
             <label className="text-sm" htmlFor="">
               Address
             </label>
-            <Input name="address" required onChange={handleInputChange}></Input>
+            <Input
+              name="address"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.address}
+            ></Input>
           </div>
 
           <div>
             <label className="text-sm" htmlFor="">
               Phone
             </label>
-            <Input name="phone" required onChange={handleInputChange}></Input>
+            <Input
+              name="phone"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.phone}
+            ></Input>
           </div>
 
           <div>
             <label className="text-sm" htmlFor="">
               Email
             </label>
-            <Input name="email" required onChange={handleInputChange}></Input>
+            <Input
+              name="email"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.email}
+            ></Input>
           </div>
 
           <div className="mt-3 flex justify-end">

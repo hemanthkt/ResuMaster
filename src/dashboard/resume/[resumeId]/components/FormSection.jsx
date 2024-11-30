@@ -39,7 +39,7 @@ function FormSection() {
       {activeFormIndex == 1 ? (
         <PersonlDetail enabledNext={(v) => setEnableNext(v)}></PersonlDetail>
       ) : activeFormIndex == 2 ? (
-        <Summery />
+        <Summery enabledNext={(v) => setEnableNext(v)} />
       ) : null}
       {/* Summary */}
 
