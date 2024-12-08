@@ -3,6 +3,10 @@ import { Input } from "@/components/ui/input";
 import React, { useContext, useEffect, useState } from "react";
 import RichTextEditor from "../RichTextEditor";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
+import { useParams } from "react-router-dom";
+import { LoaderCircle } from "lucide-react";
+import GlobalApi from "./../../../../../../service/GlobalApi";
+import { toast } from "sonner";
 
 const formField = {
   title: "",
@@ -16,8 +20,9 @@ const formField = {
 
 function Experience() {
   const [experinceList, setExperinceList] = useState([formField]);
-
+  const [loading, setLoading] = useState(false);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+  const params = useParams();
   const handleChange = (index, event) => {
     // creates a shallow copy of the existing list of experiences. This is crucial in React to avoid directly mutating the state.
     const newEntries = experinceList.slice();
@@ -61,6 +66,29 @@ function Experience() {
     });
     console.log(experinceList);
   }, [experinceList]);
+
+  const onSave = () => {
+    setLoading(true);
+    const data = {
+      data: {
+        Experience: experinceList.map(({ id, ...rest }) => rest),
+      },
+    };
+
+    console.log(experinceList);
+
+    GlobalApi.UpdateResumeDetail(params.resumeId, data).then(
+      (resp) => {
+        console.log(resp);
+        setLoading(false);
+        toast("details updated");
+      },
+      (error) => {
+        setLoading(false);
+        toast("details error");
+      }
+    );
+  };
 
   return (
     <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
@@ -136,7 +164,7 @@ function Experience() {
       <div className="flex justify-between">
         <div className="gap-2">
           <Button
-            variant="outine"
+            variant="outline"
             onClick={AddNewExperience}
             className="text-primary"
           >
@@ -144,11 +172,17 @@ function Experience() {
           </Button>
 
           <Button
-            variant="outine"
+            variant="outline"
             onClick={RemoveExperience}
             className="text-primary"
           >
             - Remove
+          </Button>
+        </div>
+
+        <div className="mt-2 flex justify-end">
+          <Button type="submit" disabled={loading} onClick={() => onSave()}>
+            {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
           </Button>
         </div>
       </div>

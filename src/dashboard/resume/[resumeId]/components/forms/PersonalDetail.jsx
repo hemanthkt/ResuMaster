@@ -38,7 +38,7 @@ function PersonlDetail({ enabledNext }) {
 
         enabledNext(true);
         setLoading(false);
-        toast("Detals updated");
+        toast("Details updated");
       },
       (error) => {
         setLoading(false);
@@ -124,7 +124,7 @@ function PersonlDetail({ enabledNext }) {
           </div>
 
           <div className="mt-3 flex justify-end">
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading} onClick={(e) => onSave(e)}>
               {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
             </Button>
           </div>

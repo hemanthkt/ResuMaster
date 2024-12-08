@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { AIChatSession } from "./../../../../../../service/AIModal";
 
 const prompt =
-  "Job title: {jobTitle} depending on the job title give me  summery for my resume within 4-5 lines in JSON format with field experience Level and summery with experience level for fresher, mid-level, experienced";
+  "Job title: {jobTitle} depending on the job title give me  summery for my resume within 4-5 lines in JSON format with field experienceLevel and summery with experience level for fresher, mid-level, experienced";
 
 function Summery({ enabledNext }) {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
